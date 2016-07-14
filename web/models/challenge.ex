@@ -3,6 +3,7 @@ defmodule Hacktiv8Challenges.Challenge do
 
   schema "challenges" do
     field :week, :string
+    field :order_number, :integer
     field :url, :string
     field :published, :boolean, default: false
     field :date_publish, Ecto.DateTime
@@ -15,7 +16,7 @@ defmodule Hacktiv8Challenges.Challenge do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:week, :url, :published, :date_publish])
-    |> validate_required([:week, :url, :published, :date_publish])
+    |> cast(params, [:week, :url, :order_number, :published, :date_publish])
+    |> validate_required([:week, :url, :order_number, :published, :date_publish])
   end
 end

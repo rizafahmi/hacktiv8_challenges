@@ -8,6 +8,11 @@
   </li>
 
   <li>
+    <strong>Order Number:</strong>
+    <%= @challenge.order_number %>
+  </li>
+
+  <li>
     <strong>Url:</strong>
     <%= @challenge.url %>
   </li>

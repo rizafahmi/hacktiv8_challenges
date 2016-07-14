@@ -1,0 +1,28 @@
+<h2>Show challenge</h2>
+
+<ul>
+
+  <li>
+    <strong>Week:</strong>
+    <%= @challenge.week %>
+  </li>
+
+  <li>
+    <strong>Url:</strong>
+    <%= @challenge.url %>
+  </li>
+
+  <li>
+    <strong>Published:</strong>
+    <%= @challenge.published %>
+  </li>
+
+  <li>
+    <strong>Date publish:</strong>
+    <%= @challenge.date_publish %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: challenge_path(@conn, :edit, @challenge) %>
+<%= link "Back", to: challenge_path(@conn, :index) %>

@@ -9,4 +9,9 @@ defmodule Hacktiv8Challenges.PageController do
     render conn, "index.html", challenges: challenges,
       layout: {Hacktiv8Challenges.LayoutView, "read.html"}
   end
+
+  def show(conn, %{"id" => id}) do
+    challenge = Repo.get!(Challenge, id)
+    render conn, "show.html", challenge: challenge
+  end
 end

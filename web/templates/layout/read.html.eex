@@ -8,10 +8,9 @@
     <meta name="author" content="">
 
     <title>Hello Hacktiv8Challenges!</title>
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
-  <body>
+  <body oncopy="return false" oncut="return false" onpaste="return false">
     <div class="container">
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>

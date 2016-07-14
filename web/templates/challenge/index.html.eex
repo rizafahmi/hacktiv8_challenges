@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Week</th>
+      <th>Order Number</th>
       <th>Url</th>
       <th>Published</th>
       <th>Date publish</th>
@@ -15,6 +16,7 @@
 <%= for challenge <- @challenges do %>
     <tr>
       <td><%= challenge.week %></td>
+      <td><%= challenge.order_number %></td>
       <td><%= challenge.url %></td>
       <td><%= challenge.published %></td>
       <td><%= challenge.date_publish %></td>

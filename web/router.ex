@@ -17,6 +17,7 @@ defmodule Hacktiv8Challenges.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    get "/read/:id", PageController, :show
     resources "/challenges", ChallengeController
   end
 

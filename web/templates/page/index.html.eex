@@ -1,11 +1,7 @@
-<div class="row">
-  <div class="col-lg-6">
-    <%= for challenge <- @challenges do %>
-    <h4>Challenge #<%= challenge.order_number %></h4>
-    <p>
-      <%= get_challenge_readme(challenge.url) %>
-    </p>
-    <hr>
-    <% end %>
-  </div>
+<div class="ui tall stacked segment">
+  <%= for challenge <- @challenges do %>
+  <p>
+  <%= get_challenge_readme(challenge.url) %>
+  </p>
+  <% end %>
 </div>

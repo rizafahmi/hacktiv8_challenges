@@ -5,7 +5,8 @@ defmodule Hacktiv8Challenges.PageController do
   def index(conn, _params) do
     challenges = Repo.all(from challenge in Challenge,
      where: challenge.published == true,
-     order_by: challenge.order_number)
+     order_by: challenge.order_number,
+     limit: 1)
     render conn, "index.html", challenges: challenges,
       layout: {Hacktiv8Challenges.LayoutView, "read.html"}
   end

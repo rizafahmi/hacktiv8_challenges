@@ -1,8 +1,30 @@
-<div class="row">
-  <div class="col-lg-6">
-    <p>
-    <%= get_challenge_readme(@challenge.url) %>
-    </p>
-    <hr>
+<div class="ui red segment">
+  <p>
+  <%= get_challenge_readme(@challenge.url) %>
+  </p>
+</div>
+<div class="ui green segment">
+  <div class="ui two column grid">
+    <div class="column">
+      <%= if (@prev != nil) do %>
+      <a href="<%= page_path(@conn, :show, @prev.id) %>" class="ui left labeled icon button">
+      <% else %>
+      <a href="" class="ui left labeled disabled icon button">
+      <% end %>
+        <i class="left arrow icon"></i>
+        Prev
+      </a>
+
+    </div>
+    <div class="column">
+      <%= if (@next != nil) do %>
+      <a href="<%= page_path(@conn, :show, @next.id) %>" class="ui right labeled icon teal button right floated">
+      <% else %>
+      <a href="#" class="ui right labeled icon disabled teal button right floated">
+      <% end %>
+        <i class="right arrow icon"></i>
+        Next
+      </a>
+    </div>
   </div>
 </div>

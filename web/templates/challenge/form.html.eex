@@ -6,6 +6,12 @@
   <% end %>
 
   <div class="form-group">
+    <%= label f, :batch_id, class: "control-label" %>
+    <%= select f, :batch_id, @batches, class: "form-control",
+       prompt: "Choose the batch" %>
+  </div>
+
+  <div class="form-group">
     <%= label f, :week, class: "control-label" %>
     <%= text_input f, :week, class: "form-control" %>
     <%= error_tag f, :week %>

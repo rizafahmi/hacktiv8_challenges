@@ -3,6 +3,7 @@
 <table class="table">
   <thead>
     <tr>
+      <th>Batch</th>
       <th>Week</th>
       <th>Order Number</th>
       <th>Url</th>
@@ -15,6 +16,7 @@
   <tbody>
 <%= for challenge <- @challenges do %>
     <tr>
+      <td><%= challenge.batch.number %> - <%= challenge.batch.nickname %></td>
       <td><%= challenge.week %></td>
       <td><%= challenge.order_number %></td>
       <td><%= challenge.url %></td>

@@ -7,9 +7,10 @@ defmodule Hacktiv8Challenges.PageController do
     challenges = Repo.all(from challenge in Challenge,
      where: challenge.published == true,
      order_by: challenge.order_number)
+   IEx.pry
 
-    render conn, "index.html", challenge: Enum.at(challenges, 0), next: Enum.at(challenges, 1),
-      layout: {Hacktiv8Challenges.LayoutView, "read.html"}
+   render conn, "index.html", challenge: Enum.at(challenges, 0), next: Enum.at(challenges, 1),
+   layout: {Hacktiv8Challenges.LayoutView, "read.html"}
   end
 
   def show(conn, %{"id" => id}) do

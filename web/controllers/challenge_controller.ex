@@ -2,9 +2,13 @@ defmodule Hacktiv8Challenges.ChallengeController do
   use Hacktiv8Challenges.Web, :controller
 
   alias Hacktiv8Challenges.Challenge
+  alias Hacktiv8Challenges.Batch
+
+  plug :load_batches when action in [:new, :create, :edit, :update]
 
   def index(conn, _params) do
     challenges = Repo.all(Challenge)
+    challenges = Repo.preload(challenges, :batch)
     render(conn, "index.html", challenges: challenges)
   end
 
@@ -61,5 +65,14 @@ defmodule Hacktiv8Challenges.ChallengeController do
     conn
     |> put_flash(:info, "Challenge deleted successfully.")
     |> redirect(to: challenge_path(conn, :index))
+  end
+
+  defp load_batches(conn, _) do
+    query =
+      Batch
+      |> Batch.sort_by_number
+      |> Batch.names_and_ids
+    batches = Repo.all(query)
+    assign(conn, :batches, batches)
   end
 end

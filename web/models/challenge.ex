@@ -7,6 +7,7 @@ defmodule Hacktiv8Challenges.Challenge do
     field :url, :string
     field :published, :boolean, default: false
     field :date_publish, Ecto.DateTime
+    belongs_to :batch, Hacktiv8Challenges.Batch
 
     timestamps()
   end

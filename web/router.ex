@@ -17,8 +17,9 @@ defmodule Hacktiv8Challenges.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    get "/read/:id", PageController, :show
+    get "/read/:batch_id/:id", PageController, :show
     resources "/challenges", ChallengeController
+    resources "/batches", BatchController
   end
 
   # Other scopes may use custom stacks.

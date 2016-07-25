@@ -18,7 +18,7 @@
     </div>
     <div class="column">
       <%= if (@next != nil) do %>
-      <a href="<%= page_path(@conn, :show, @next.id) %>" class="ui right labeled icon teal button right floated">
+      <a href="<%= page_path(@conn, :show, @next.batch_id, @next.id) %>" class="ui right labeled icon teal button right floated">
       <% else %>
       <a href="#" class="ui right labeled icon disabled teal button right floated">
       <% end %>

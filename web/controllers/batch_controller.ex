@@ -44,7 +44,6 @@ defmodule Hacktiv8Challenges.BatchController do
 
     case Repo.update(changeset) do
       {:ok, batch} ->
-        IEx.pry
         conn
         |> put_flash(:info, "Batch updated successfully.")
         |> redirect(to: batch_path(conn, :show, batch))

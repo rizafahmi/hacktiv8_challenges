@@ -7,7 +7,7 @@
   <div class="ui two column grid">
     <div class="column">
       <%= if (@prev != nil) do %>
-      <a href="<%= page_path(@conn, :show, @prev.id) %>" class="ui left labeled icon button">
+      <a href="<%= page_path(@conn, :show, @prev.batch_id, @prev.id) %>" class="ui left labeled icon button">
       <% else %>
       <a href="" class="ui left labeled disabled icon button">
       <% end %>

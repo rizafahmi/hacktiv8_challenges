@@ -8,7 +8,6 @@ defmodule Hacktiv8Challenges.PageController do
      where: challenge.published == true,
      order_by: challenge.order_number)
 
-   IEx.pry
    challenge = Enum.at(challenges, 0)
    
    redirect(conn, to: "/read/" <> to_string(challenge.batch_id) <> "/" <> to_string(challenge.id))

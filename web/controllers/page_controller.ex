@@ -16,21 +16,34 @@ defmodule Hacktiv8Challenges.PageController do
    layout: {Hacktiv8Challenges.LayoutView, "read.html"}
   end
 
-  def show(conn, %{"id" => id, "batch_id" => batch_id}) do
-    challenge = Repo.get!(Challenge, id)
-    next = Repo.all(from c in Challenge,
-     where: c.published == true and c.id != ^id and
-      c.batch_id == ^batch_id and
-      c.order_number > ^challenge.order_number,
-     order_by: c.order_number,
-     limit: 1)
+  def show(conn, %{"batch_id" => batch_id, "id" => id}) do
+    case Repo.get(Challenge, id) do
+      nil ->
+        render conn, "404.html"
+      challenge ->
+        current_challenge = Repo.all(from c in Challenge,
+         where: c.published == true and c.batch_id == ^batch_id,
+         order_by: c.order_number,
+         limit: 1)
 
-    prev = Repo.all(from c in Challenge,
-     where: c.published == true and c.id != ^id and
-      c.order_number < ^challenge.order_number,
-     order_by: c.order_number,
-     limit: 1)
-    render conn, "show.html", challenge: challenge, next: Enum.at(next, 0),prev: Enum.at(prev, 0),
+        next = Repo.all(from c in Challenge,
+         where: c.published == true and c.id != ^id and
+         c.batch_id == ^batch_id and
+         c.order_number > ^challenge.order_number,
+         order_by: c.order_number,
+         limit: 1)
+
+       prev = Repo.all(from c in Challenge,
+        where: c.published == true and c.id != ^id and
+        c.order_number < ^challenge.order_number,
+        order_by: c.order_number,
+        limit: 1)
+      if (Enum.count(current_challenge) > 0) do
+        render conn, "show.html", challenge: Enum.at(current_challenge, 0), next: Enum.at(next, 0),prev: Enum.at(prev, 0),
       layout: {Hacktiv8Challenges.LayoutView, "read.html"}
+      else
+        render conn, "404.html"
+      end
+    end
   end
 end

@@ -37,6 +37,7 @@ defmodule Hacktiv8Challenges.ChallengeController do
 
   def edit(conn, %{"id" => id}) do
     challenge = Repo.get!(Challenge, id)
+    challenge = Repo.preload(challenge, :batch)
     changeset = Challenge.changeset(challenge)
     render(conn, "edit.html", challenge: challenge, changeset: changeset)
   end

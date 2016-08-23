@@ -39,7 +39,7 @@ defmodule Hacktiv8Challenges.PageController do
         order_by: c.order_number,
         limit: 1)
       if (Enum.count(current_challenge) > 0) do
-        render conn, "show.html", challenge: Enum.at(current_challenge, 0), next: Enum.at(next, 0),prev: Enum.at(prev, 0),
+        render conn, "show.html", challenge: challenge, next: Enum.at(next, 0),prev: Enum.at(prev, 0),
       layout: {Hacktiv8Challenges.LayoutView, "read.html"}
       else
         render conn, "404.html"

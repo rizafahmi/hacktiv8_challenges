@@ -19,7 +19,6 @@ defmodule Hacktiv8Challenges.ChallengeController do
   end
 
   def create(conn, %{"challenge" => challenge_params}) do
-    IEx.pry
     batch = Repo.get!(Batch, challenge_params["batch_id"])
     changeset =
       batch

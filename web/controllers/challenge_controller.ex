@@ -1,3 +1,4 @@
+require IEx
 defmodule Hacktiv8Challenges.ChallengeController do
   use Hacktiv8Challenges.Web, :controller
 
@@ -18,7 +19,12 @@ defmodule Hacktiv8Challenges.ChallengeController do
   end
 
   def create(conn, %{"challenge" => challenge_params}) do
-    changeset = Challenge.changeset(%Challenge{}, challenge_params)
+    IEx.pry
+    batch = Repo.get!(Batch, challenge_params["batch_id"])
+    changeset =
+      batch
+      |> build_assoc(:challenges)
+      |> Challenge.changeset(challenge_params)
 
     case Repo.insert(changeset) do
       {:ok, _challenge} ->
